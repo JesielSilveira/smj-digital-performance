@@ -33,7 +33,7 @@ export function Navbar() {
 
       {/* CTA */}
       <div className="ml-6 hidden md:flex " data-aos="zoom-in" data-aos-duration="1000">
-        <Link href={`https://wa.me/+5554996416574?text=Ola tudo bem? Gostaria de mais informações sobre os serviços!`} target="_blank"><Button size="sm">WhatsApp</Button></Link>
+        <Link href={`https://wa.me/+5554996416573?text=Ola tudo bem? Gostaria de mais informações sobre os serviços!`} target="_blank"><Button size="sm">WhatsApp</Button></Link>
       </div>
 
       {/* Mobile Menu */}
@@ -53,7 +53,7 @@ export function Navbar() {
                 {/*<Link href="#portfolio">Portfólio</Link>*/}
                 <a href="#about">Sobre</a>
                 <a href="#contact">Contato</a>
-                 <Link href={`https://wa.me/+5554996416574?text=Ola tudo bem? Gostaria de mais informações sobre os serviços!`} target="_blank">
+                 <Link href={`https://wa.me/+5554996416573?text=Ola tudo bem? Gostaria de mais informações sobre os serviços!`} target="_blank">
                 <Button size="sm" className="mt-4">WhatsApp</Button>
                 </Link>
               </nav>

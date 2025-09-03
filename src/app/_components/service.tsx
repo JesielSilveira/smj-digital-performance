@@ -49,7 +49,7 @@ export function Services() {
 
               {/* Botão WhatsApp */}
               <Link
-                href={`https://wa.me/5554996416574?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20${service.title}.`}
+                href={`https://wa.me/5554996416573?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20${service.title}.`}
                 target="_blank"
               >
                 <Button className="w-full bg-green-500 hover:bg-green-600 text-white">

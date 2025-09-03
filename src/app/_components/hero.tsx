@@ -16,7 +16,7 @@ export function Hero() {
           <p className="mt-4 text-lg opacity-90" data-aos="fade-right">
             Nós criamos soluções que impulsionam o crescimento do seu negócio.
           </p>
-          <Link href={`https://wa.me/+5554996416574?text=Ola tudo bem? Gostaria de mais informações sobre os serviços!`} target="_blank">
+          <Link href={`https://wa.me/+5554996416573?text=Ola tudo bem? Gostaria de mais informações sobre os serviços!`} target="_blank">
             <Button className="mt-6 bg-green-500 hover:bg-green-600 text-white" data-aos="fade-up">
               Solicitar orçamento
             </Button>
