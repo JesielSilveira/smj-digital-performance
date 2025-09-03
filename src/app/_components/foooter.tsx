@@ -19,7 +19,7 @@ export  function Footer() {
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
               <a href="https\wa:+5554996416573" className="hover:underline">
-                +55 (54) 99641-6574
+                +55 (54) 99641-6573
               </a>
             </li>
             <li className="flex items-center gap-2">
