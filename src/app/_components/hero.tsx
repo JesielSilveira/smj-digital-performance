@@ -13,14 +13,14 @@ export function Hero() {
           <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-aos="fade-down">
             Aumente suas vendas com a ajuda de uma Agência Digital
           </h1>
-          <p className="mt-4 text-lg opacity-90" data-aos="fade-right">
+          <p className="mt-4 text-lg opacity-90" data-aos="fade-right" >
             Nós criamos soluções que impulsionam o crescimento do seu negócio.
           </p>
-          <Link href={`https://wa.me/+5554996416573?text=Ola tudo bem? Gostaria de mais informações sobre os serviços!`} target="_blank">
-            <Button className="mt-6 bg-green-500 hover:bg-green-600 text-white" data-aos="fade-up">
-              Solicitar orçamento
-            </Button>
-          </Link>
+            <Link href="#services">
+              <Button className="bg-white text-blue-900 hover:bg-gray-200 mt-4">
+                Ver Planos
+              </Button>
+            </Link>
         </div>
 
         {/* Imagem */}
