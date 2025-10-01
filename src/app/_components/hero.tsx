@@ -23,7 +23,7 @@ export function Hero() {
             </Link>
         </div>
 
-        {/* Imagem */}
+        {/* Imagem, |atualizaçao de commim ignore| */}
         <div className="hidden md:block" data-aos="fade-down-left">
           <Image
             src={Banner}
