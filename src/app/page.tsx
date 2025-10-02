@@ -4,7 +4,6 @@ import { Hero } from "./_components/hero"
 import { Navbar } from "./_components/navbar"
 import { OfertaRelampago } from "./_components/ofertafalsh"
 import { Services } from "./_components/service"
-import {FormLeads} from "@/app/_components/form"
  
 export default function Home(){
    return(
@@ -14,7 +13,6 @@ export default function Home(){
       <Services/>
       <OfertaRelampago/>
       <About/>
-      <FormLeads/>
       <Footer/>
      </main>
    )
