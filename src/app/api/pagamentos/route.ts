@@ -5,7 +5,11 @@ import db from "@/lib/mysql";
 export async function GET() {
   try {
     const [rows] = await db.query("SELECT * FROM pagamentos ORDER BY created_at DESC");
-    return NextResponse.json(rows);
+    
+    // Garante que rows sempre será um array
+    const data = Array.isArray(rows) ? rows : [];
+    
+    return NextResponse.json(data);
   } catch (err) {
     console.error("Erro ao buscar pagamentos:", err);
     return NextResponse.json({ error: "Erro ao buscar pagamentos" }, { status: 500 });

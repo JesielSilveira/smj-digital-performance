@@ -5,7 +5,11 @@ import db from "@/lib/mysql";
 export async function GET() {
   try {
     const [rows] = await db.query("SELECT * FROM leads ORDER BY created_at DESC");
-    return NextResponse.json(rows);
+    
+    // Garante que rows sempre seja um array
+    const data = Array.isArray(rows) ? rows : [];
+
+    return NextResponse.json(data);
   } catch (err) {
     console.error("Erro ao buscar leads:", err);
     return NextResponse.json({ error: "Erro ao buscar leads" }, { status: 500 });
@@ -23,8 +27,8 @@ export async function POST(request: Request) {
     }
 
     const [result] = await db.execute(
-      "INSERT INTO leads (name,email,phone) VALUES (?,?,?)",
-      [name,email,phone]
+      "INSERT INTO leads (name, email, phone) VALUES (?,?,?)",
+      [name, email, phone || null]
     );
 
     return NextResponse.json({ success: true, id: (result as any).insertId }, { status: 201 });
@@ -33,4 +37,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Erro no servidor" }, { status: 500 });
   }
 }
-
