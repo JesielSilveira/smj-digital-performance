@@ -4,13 +4,14 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { X } from "lucide-react"
 
 export function OfertaRelampago() {
   // Estado do timer
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 })
+  const [openVideo, setOpenVideo] = useState(false)
 
   useEffect(() => {
-    // Define um prazo (ex: 24h a partir de agora)
     const deadline = new Date()
     deadline.setHours(deadline.getHours() + 24)
 
@@ -25,7 +26,6 @@ export function OfertaRelampago() {
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
         setTimeLeft({ hours, minutes, seconds })
       }
     }, 1000)
@@ -40,7 +40,6 @@ export function OfertaRelampago() {
       </h2>
 
       <Card className="max-w-2xl mx-auto shadow-2xl border border-red-400 rounded-2xl bg-gradient-to-b from-red-50 to-white">
-        {/* Cabeçalho com contador */}
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-red-700">
             Pacote Digital Express 🚀
@@ -61,7 +60,6 @@ export function OfertaRelampago() {
           </p>
         </CardHeader>
 
-        {/* Conteúdo do Card */}
         <CardContent className="text-center">
           <ul className="text-left text-gray-700 mb-6 list-disc list-inside space-y-2">
             <li>Gestão de Tráfego Básica (Google ou Meta Ads)</li>
@@ -78,14 +76,13 @@ export function OfertaRelampago() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="https://wa.me/5554996416573?text=Olá!%20Tenho%20interesse%20na%20Oferta%20Relâmpago%20(Pacote%20Digital%20Express!)."
-              target="_blank"
+            {/* Botão Saiba Mais → abre modal de vídeo */}
+            <Button
+              className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white"
+              onClick={() => setOpenVideo(true)}
             >
-              <Button className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white">
-                Saiba Mais
-              </Button>
-            </Link>
+              Saiba Mais
+            </Button>
 
             <Link href="https://pag.ae/815nYPU7G" target="_blank">
               <Button className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white">
@@ -95,6 +92,36 @@ export function OfertaRelampago() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Modal do vídeo */}
+      {openVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
+          <div className="relative w-full max-w-3xl bg-white rounded-xl overflow-hidden shadow-lg animate-fadeIn">
+            <button
+              onClick={() => setOpenVideo(false)}
+              className="absolute top-3 right-3 text-gray-700 hover:text-black z-50 p-2"
+            >
+              <X size={28} />
+            </button>
+            <video
+              src="/videos/express_digital.mp4" // coloque o caminho correto do vídeo
+              controls
+              autoPlay
+              className="w-full h-auto rounded-b-xl"
+            />
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+      `}</style>
     </section>
   )
 }

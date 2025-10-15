@@ -43,7 +43,7 @@ export  function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-4">Siga-nos</h3>
           <div className="flex gap-4">
-            <Link href="https://facebook.com" target="_blank">
+            <Link href="https://www.facebook.com/profile.php?id=61579962946298" target="_blank">
               <Facebook className="h-5 w-5 hover:text-blue-600 transition" />
             </Link>
             <Link href="https://www.instagram.com/smj_d.performance/" target="_blank">
