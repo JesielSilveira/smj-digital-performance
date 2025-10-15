@@ -14,26 +14,26 @@ export async function GET() {
 }
 
 // 🟢 POST → cria um novo lead
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const body = await request.json();
-    const { name, email, phone } = body;
+    const { name, email, phone } = await req.json();
+    console.log("Dados recebidos:", { name, email, phone });
 
-    if (!name || !email || !phone) {
-      return NextResponse.json({ error: "Nome e email são obrigatórios" }, { status: 400 });
-    }
+    const query = "INSERT INTO leads (name, email, phone) VALUES (?, ?, ?)";
+    console.log("Query:", query);
 
-    const [result] = await db.execute(
-      "INSERT INTO leads (name, email, phone) VALUES (?, ?, ?, ?)",
-      [name, email, phone || null]
-    );
+    const [result] = await db.execute(query, [name, email, phone || null]);
+    console.log("Resultado do insert:", result);
 
-    return NextResponse.json(
-      { success: true, id: (result as any).insertId },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error("Erro ao criar lead:", error);
-    return NextResponse.json({ error: "Erro no servidor" }, { status: 500 });
+    return NextResponse.json({ success: true, id: (result as any).insertId }, { status: 201 });
+  } catch (err: any) {
+    console.error("Erro ao criar lead:", err);
+    return NextResponse.json({
+      error: err.message,
+      code: err.code,
+      errno: err.errno,
+      sqlMessage: err.sqlMessage,
+    }, { status: 500 });
   }
 }
+
