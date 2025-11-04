@@ -43,7 +43,6 @@ export function AdminPanel() {
               <th className="border p-2">Nome</th>
               <th className="border p-2">Email</th>
               <th className="border p-2">Telefone</th>
-              <th className="border p-2">Mensagem</th>
               <th className="border p-2">Criado em</th>
             </tr>
           </thead>
@@ -54,7 +53,6 @@ export function AdminPanel() {
                 <td className="border p-2">{lead.name}</td>
                 <td className="border p-2">{lead.email}</td>
                 <td className="border p-2">{lead.phone}</td>
-                <td className="border p-2">{lead.message}</td>
                 <td className="border p-2">{lead.created_at}</td>
               </tr>
             ))}

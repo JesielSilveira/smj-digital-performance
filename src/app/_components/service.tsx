@@ -1,60 +1,30 @@
+"use client"
+
 import Link from "next/link"
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { X } from "lucide-react"
+
+interface Plan {
+  name: string
+  price: string
+  videoSrc: string
+  link: string
+  popular?: boolean
+  description: string[]
+}
+
+interface Service {
+  title: string
+  icon: string
+  plans: Plan[]
+}
 
 export function Services() {
-  const services = [
-    {
-      title: "Gestão de Tráfego",
-      icon: "📊",
-      plans: [
-        {
-          name: "Plano Básico",
-          price: "R$497/mês",
-          link: "https://pag.ae/815nZJBjv",
-          description: [
-            "Gestão de 1 plataforma (Google Ads ou Meta Ads)",
-            "Criação de até 2 campanhas mensais",
-            "Definição de público-alvo básico",
-            "Segmentação por interesses gerais",
-            "Relatório mensal simplificado",
-            "Suporte via WhatsApp em horário comercial",
-          ],
-        },
-        {
-          name: "Plano Avançado",
-          price: "R$997/mês",
-          popular: true,
-          link: "https://pag.ae/815n-oB6a",
-          description: [
-            "Gestão de 2 plataformas (Google Ads + Meta Ads)",
-            "Criação de até 5 campanhas simultâneas",
-            "Estratégia de remarketing",
-            "Segmentação detalhada (comportamento, interesses específicos)",
-            "Anúncios com copywriting persuasivo",
-            "Relatórios semanais + insights de melhorias",
-            "Ajustes contínuos para aumentar o ROI",
-            "Suporte via WhatsApp e e-mail",
-          ],
-        },
-        {
-          name: "Plano Premium",
-          price: "R$1.497/mês",
-          link: "https://pag.ae/815n_dhEv",
-          description: [
-            "Gestão de múltiplas plataformas (Google, Meta e TikTok/LinkedIn Ads)",
-            "Criação ilimitada de campanhas conforme orçamento",
-            "Estratégias avançadas de funil de vendas",
-            "Segmentação avançada + lookalike audiences",
-            "Testes A/B contínuos (criativos, públicos, landing pages)",
-            "Relatórios detalhados + reuniões mensais estratégicas",
-            "Consultoria exclusiva anúncios + site",
-            "Monitoramento diário e ajustes contínuos",
-            "Suporte VIP",
-          ],
-        },
-      ],
-    },
+  const [openVideo, setOpenVideo] = useState<string | null>(null)
+
+  const services: Service[] = [
     {
       title: "Desenvolvimento Web",
       icon: "💻",
@@ -62,6 +32,7 @@ export function Services() {
         {
           name: "Site Institucional",
           price: "R$997 (único)",
+          videoSrc: "/videos/site_institucional.mp4",
           link: "https://pag.ae/815n_UYB1",
           description: [
             "Site responsivo de até 5 páginas",
@@ -76,6 +47,7 @@ export function Services() {
           name: "Landing Page",
           price: "R$697 (único)",
           popular: true,
+          videoSrc: "/videos/landing_page.mp4",
           link: "https://pag.ae/815o1fjX8",
           description: [
             "Página de alta conversão para campanhas",
@@ -89,6 +61,7 @@ export function Services() {
         {
           name: "Loja Virtual",
           price: "A partir de R$1.997",
+          videoSrc: "/videos/loja_virtual.mp4",
           link: "https://pag.ae/815o1JVw1",
           description: [
             "E-commerce completo integrado a pagamentos",
@@ -99,17 +72,16 @@ export function Services() {
             "Suporte via WhatsApp",
           ],
         },
-      ],
+      ]
     },
   ]
-
   return (
     <section id="services" className="container mx-auto py-20">
       <h2 className="text-3xl font-bold text-center mb-12">Serviços</h2>
 
       <div className="space-y-20">
-        {services.map((service, index) => (
-          <div key={index} data-aos="fade-up">
+        {services.map((service, idx) => (
+          <div key={idx} data-aos="fade-up">
             <h3 className="text-2xl font-semibold flex items-center gap-2 mb-6">
               <span>{service.icon}</span> {service.title}
             </h3>
@@ -118,9 +90,7 @@ export function Services() {
               {service.plans.map((plan, i) => (
                 <Card
                   key={i}
-                  className={`shadow-lg rounded-2xl border ${
-                    plan.popular ? "border-blue-500 bg-blue-50" : ""
-                  }`}
+                  className={`shadow-lg rounded-2xl border ${plan.popular ? "border-blue-500 bg-blue-50" : ""}`}
                 >
                   <CardHeader>
                     <CardTitle className="text-xl flex items-center justify-between">
@@ -142,17 +112,13 @@ export function Services() {
                     <p className="font-bold text-lg mb-4">{plan.price}</p>
 
                     <div className="flex flex-col gap-2">
-                      {/* Botão Saiba Mais */}
-                      <Link
-                        href={`https://wa.me/5554996416573?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20o%20${plan.name}%20(${service.title}).`}
-                        target="_blank"
+                      <Button
+                        className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+                        onClick={() => setOpenVideo(plan.videoSrc)}
                       >
-                        <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">
-                          Saiba Mais
-                        </Button>
-                      </Link>
+                        Saiba Mais
+                      </Button>
 
-                      {/* Botão Comprar */}
                       <Link href={plan.link} target="_blank">
                         <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
                           Comprar
@@ -166,6 +132,39 @@ export function Services() {
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      {openVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
+          <div className="relative w-full max-w-3xl bg-white rounded-xl overflow-hidden shadow-lg animate-fadeIn">
+            {/* Botão X */}
+            <button
+              onClick={() => setOpenVideo(null)}
+              className="absolute top-3 right-3 text-gray-700 hover:text-black z-50 p-2"
+            >
+              <X size={28} />
+            </button>
+
+            <video
+              src={openVideo}
+              controls
+              autoPlay
+              className="w-full h-auto rounded-b-xl"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Animação */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+      `}</style>
     </section>
   )
 }

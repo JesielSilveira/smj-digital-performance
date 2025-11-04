@@ -4,13 +4,14 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { X } from "lucide-react"
 
 export function OfertaRelampago() {
   // Estado do timer
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 })
+  const [openVideo, setOpenVideo] = useState(false)
 
   useEffect(() => {
-    // Define um prazo (ex: 24h a partir de agora)
     const deadline = new Date()
     deadline.setHours(deadline.getHours() + 24)
 
@@ -25,7 +26,6 @@ export function OfertaRelampago() {
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
         setTimeLeft({ hours, minutes, seconds })
       }
     }, 1000)
@@ -40,10 +40,9 @@ export function OfertaRelampago() {
       </h2>
 
       <Card className="max-w-2xl mx-auto shadow-2xl border border-red-400 rounded-2xl bg-gradient-to-b from-red-50 to-white">
-        {/* Cabeçalho com contador */}
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-red-700">
-            Pacote Digital Express 🚀
+            Desenvolvimento de SaaS Sob Medida 🚀
           </CardTitle>
           <div className="mt-4 flex justify-center gap-4 text-lg font-mono text-red-600">
             <div className="px-3 py-2 bg-red-100 rounded-lg">
@@ -61,35 +60,23 @@ export function OfertaRelampago() {
           </p>
         </CardHeader>
 
-        {/* Conteúdo do Card */}
         <CardContent className="text-center">
           <ul className="text-left text-gray-700 mb-6 list-disc list-inside space-y-2">
-            <li>Gestão de Tráfego Básica (Google ou Meta Ads)</li>
-            <li>Criação de até 2 campanhas mensais</li>
-            <li>Landing Page profissional focada em conversão</li>
-            <li>Formulário/WhatsApp integrado</li>
-            <li>SEO básico incluso</li>
-            <li>Relatório mensal simplificado</li>
+            <li>Desenvolvimento completo do seu SaaS do zero</li>
+            <li>Estrutura com autenticação, painéis, assinaturas e integrações</li>
+            <li>Interface moderna e responsiva (UX/UI profissional)</li>
+            <li>Hospedagem e deploy configurados</li>
+            <li>Suporte técnico pós-entrega</li>
           </ul>
 
           <p className="text-2xl font-bold mb-6 text-red-700">
-            De <span className="line-through text-gray-500">R$1.194</span> por{" "}
-            <span className="text-3xl text-red-600">R$997</span>
+           Faça seu Orçamento!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="https://wa.me/5554996416573?text=Olá!%20Tenho%20interesse%20na%20Oferta%20Relâmpago%20(Pacote%20Digital%20Express!)."
-              target="_blank"
-            >
-              <Button className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white">
-                Saiba Mais
-              </Button>
-            </Link>
-
-            <Link href="https://pag.ae/815nYPU7G" target="_blank">
+            <Link href={`https://wa.me/+5554996416573?text=Ola tudo bem? Gostaria de um orçamento para meu Saas!`} target="_blank">
               <Button className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white">
-                Comprar Agora
+                Saiba Mais!
               </Button>
             </Link>
           </div>
