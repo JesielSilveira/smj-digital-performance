@@ -9,7 +9,7 @@ export function PromoBar() {
         <div className="flex items-center gap-2" data-aos="fade-right">
           <CreditCard size={16} className="text-yellow-400" />
           <p>
-            <strong>Parcele em até 18x</strong> no cartão de crédito
+            <strong>Parcele em até 12x</strong> no cartão de crédito
           </p>
         </div>
 

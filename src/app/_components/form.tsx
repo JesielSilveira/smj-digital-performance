@@ -55,7 +55,7 @@ export function FormLeads() {
     <section className="container mx-auto py-20">
       <div className="max-w-lg mx-auto shadow-lg rounded-2xl p-8 bg-white">
         <h2 className="text-3xl font-bold text-center mb-4">
-          Ganhe até <span className="text-green-500">15% de desconto</span> nas 3 primeiras compras!
+          Ganhe até <span className="text-green-500">15% de desconto</span> nas primeiras compras!
         </h2>
         <p className="text-gray-600 text-center mb-8">
           Preencha seus dados abaixo e receba seu cupom exclusivo agora mesmo.

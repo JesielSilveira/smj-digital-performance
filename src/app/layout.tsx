@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata = {
   title: "SMJ Digital Performance",
-  description: "gestao de trafego, desenvolvimento de sistemas, solucao web",
+  description: "Software House especializada em desenvolvimento de sistemas, aplicações web, automação empresarial e plataformas customizadas. Tecnologia adaptada à necessidade do seu negócio.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

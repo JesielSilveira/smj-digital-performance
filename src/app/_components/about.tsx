@@ -7,15 +7,21 @@ export function About() {
         <div>
           <h2 className="text-3xl font-bold mb-4">Sobre nós</h2>
           <p className="text-lg text-muted-foreground" data-aos="zoom-in">
-            A SMJ Digital Performance nasceu em 2020 com o propósito de ajudar empresas a se destacarem no ambiente digital. Desde então, temos atuado no desenvolvimento e manutenção de sistemas, web design e gestão de tráfego, sempre focados em gerar resultados reais para nossos clientes.
-            Nosso diferencial está em unir estratégia, criatividade e tecnologia, oferecendo soluções digitais completas que vão desde a construção de sites até a otimização de campanhas para atrair mais clientes.
-            Com mais de 4 anos de experiência, seguimos firmes no compromisso de sermos mais do que uma agência digital: queremos ser seu parceiro estratégico, transformando ideias em projetos de sucesso que impulsionam o crescimento do seu negócio.
+           A SMJ Digital Performance nasceu em 2020 com o propósito de impulsionar negócios por meio da tecnologia. Ao longo dos últimos anos, evoluímos de uma agência digital para uma software house especializada no desenvolvimento de sistemas, soluções web e produtos digitais de alta performance.
+
+Combinamos estratégia, inovação e engenharia para entregar soluções que realmente movem o ponteiro: sites de alto impacto, sistemas sob medida, plataformas robustas e ferramentas que automatizam processos e aumentam resultados.
+
+Nosso compromisso sempre foi  e continua sendo  gerar valor real. Atuamos de forma consultiva, entendendo profundamente o negócio de cada cliente para construir soluções eficientes, escaláveis e alinhadas a objetivos estratégicos.
+
+Com mais de 4 anos de experiência e dezenas de projetos entregues, seguimos firmes na missão de sermos mais do que fornecedores:
+somos parceiros de crescimento, transformando ideias em produtos digitais que fortalecem marcas, otimizam operações e aceleram resultados.
           </p>
         </div>
-        <div className="bg-gray-200 rounded-2xl p-20 shadow-inner flex items-center justify-center" data-aos="flip-left">
+        <div className="rounded-2xl flex items-center justify-center" data-aos="flip-left">
             <Image
                 src={about}
                 alt="trabalho que rende para você"
+                className="w-1000 h-auto rounded-md"
                   
             />
         </div>

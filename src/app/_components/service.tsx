@@ -1,168 +1,174 @@
 "use client"
 
-import Link from "next/link"
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { X } from "lucide-react"
-
-interface Plan {
-  name: string
-  price: string
-  videoSrc: string
-  link: string
-  popular?: boolean
-  description: string[]
-}
-
-interface Service {
-  title: string
-  icon: string
-  plans: Plan[]
-}
+import { X, ArrowRight, Cpu, Bot, MonitorSmartphone, Layers, Sparkles } from "lucide-react"
 
 export function Services() {
-  const [openVideo, setOpenVideo] = useState<string | null>(null)
+  const [openService, setOpenService] = useState(null as any)
 
-  const services: Service[] = [
+  const services = [
     {
-      title: "Desenvolvimento Web",
-      icon: "💻",
-      plans: [
-        {
-          name: "Site Institucional",
-          price: "R$997 (único)",
-          videoSrc: "/videos/site_institucional.mp4",
-          link: "https://pag.ae/815n_UYB1",
-          description: [
-            "Site responsivo de até 5 páginas",
-            "Design moderno e profissional",
-            "SEO básico para Google",
-            "Formulário de contato integrado",
-            "Entrega rápida em até 7 dias úteis",
-            "Suporte via WhatsApp",
-          ],
-        },
-        {
-          name: "Landing Page",
-          price: "R$697 (único)",
-          popular: true,
-          videoSrc: "/videos/landing_page.mp4",
-          link: "https://pag.ae/815o1fjX8",
-          description: [
-            "Página de alta conversão para campanhas",
-            "Design focado em vendas",
-            "Integração com WhatsApp ou formulário",
-            "Teste A/B de CTA e layout",
-            "Entrega rápida em até 3 dias úteis",
-            "Suporte via WhatsApp",
-          ],
-        },
-        {
-          name: "Loja Virtual",
-          price: "A partir de R$1.997",
-          videoSrc: "/videos/loja_virtual.mp4",
-          link: "https://pag.ae/815o1JVw1",
-          description: [
-            "E-commerce completo integrado a pagamentos",
-            "Carrinho e checkout funcional",
-            "Design responsivo e profissional",
-            "SEO básico e integração com Google Analytics",
-            "Entrega em até 14 dias úteis",
-            "Suporte via WhatsApp",
-          ],
-        },
-      ]
+      title: "Sistemas Personalizados de Alta Performance",
+      icon: <Cpu size={38} />,
+      short: "Soluções exclusivas com arquitetura escalável, interfaces premium e performance internacional.",
+      details: [
+        "Arquitetura escalável e segura",
+        "UX e UI profissionais",
+        "Dashboards completos e KPIs",
+        "Evolução constante + suporte corporativo",
+      ],
+    },
+    {
+      title: "Automação Inteligente e Integrações Avançadas",
+      icon: <Bot size={38} />,
+      short: "Elimine tarefas manuais com automações profissionais totalmente integradas aos sistemas da sua empresa.",
+      details: [
+        "Integrações corporativas com APIs, ERPs e CRMs",
+        "Robôs internos e fluxos inteligentes",
+        "Automação de processos repetitivos",
+        "Redução real de custos operacionais",
+      ],
+    },
+    {
+      title: "Plataformas Web Modernas e Escaláveis",
+      icon: <MonitorSmartphone size={38} />,
+      short: "Plataformas corporativas completas, rápidas, seguras e desenvolvidas com tecnologias de ponta.",
+      details: [
+        "SaaS completos e sistemas proprietários",
+        "Next.js, React, Node, arquitetura moderna",
+        "Alta performance e segurança",
+        "Portais gerenciais e ambientes administrativos",
+      ],
+    },
+    {
+      title: "Digitalização Completa de Processos",
+      icon: <Layers size={38} />,
+      short: "Transformamos processos tradicionais em operações 100% digitais, rápidas e inteligentes.",
+      details: [
+        "Mapeamento profundo de processos",
+        "Gargalos eliminados com automação",
+        "Modelagem de fluxos inteligentes",
+        "Implementação e acompanhamento contínuo",
+      ],
+    },
+    {
+      title: "Consultoria Tecnológica Premium",
+      icon: <Sparkles size={38} />,
+      short: "Direção estratégica para empresas que querem crescer de forma sólida e moderna com tecnologia.",
+      details: [
+        "Auditoria técnica completa",
+        "Roadmap tecnológico profissional",
+        "Segurança, escalabilidade e performance",
+        "Redução de custos com automação avançada",
+      ],
     },
   ]
+
   return (
-    <section id="services" className="container mx-auto py-20">
-      <h2 className="text-3xl font-bold text-center mb-12">Serviços</h2>
+    <section id="services" className="relative py-28 px-6 text-white">
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-[#020617]" />
 
-      <div className="space-y-20">
-        {services.map((service, idx) => (
-          <div key={idx} data-aos="fade-up">
-            <h3 className="text-2xl font-semibold flex items-center gap-2 mb-6">
-              <span>{service.icon}</span> {service.title}
-            </h3>
+      <div className="absolute top-1/3 -left-40 w-96 h-96 bg-blue-600/20 blur-[150px] rounded-full" />
 
-            <div className="grid gap-8 md:grid-cols-3">
-              {service.plans.map((plan, i) => (
-                <Card
-                  key={i}
-                  className={`shadow-lg rounded-2xl border ${plan.popular ? "border-blue-500 bg-blue-50" : ""}`}
+      <div className="relative z-10 container mx-auto">
+        <h2 className="text-5xl font-extrabold text-center mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
+          Soluções Tecnológicas Premium
+        </h2>
+
+        <p className="text-center text-lg text-gray-300 max-w-2xl mx-auto mb-20">
+          Desenvolvimento, automação e consultoria de alto padrão para empresas que buscam
+          eficiência, modernidade e resultados concretos.
+        </p>
+
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              className="
+                bg-white/5 
+                backdrop-blur-xl 
+                border border-white/10 
+                rounded-2xl shadow-lg 
+                hover:border-blue-500/30
+                hover:shadow-blue-500/10 
+                hover:translate-y-[-6px]
+                transition-all duration-300"
+            >
+              <CardHeader>
+                <CardTitle className="text-white flex items-center gap-4 text-xl font-semibold">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-blue-600/20 shadow-inner shadow-blue-500/20 text-blue-400">
+                    {service.icon}
+                  </div>
+                  {service.title}
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent>
+                <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+                  {service.short}
+                </p>
+
+                <Button
+                  className="w-full bg-blue-700 hover:bg-blue-600 text-white flex items-center justify-center gap-2 py-5 rounded-xl text-base"
+                  onClick={() => setOpenService(service)}
                 >
-                  <CardHeader>
-                    <CardTitle className="text-xl flex items-center justify-between">
-                      {plan.name}
-                      {plan.popular && (
-                        <span className="text-sm font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded-full">
-                          Mais Popular
-                        </span>
-                      )}
-                    </CardTitle>
-                  </CardHeader>
+                  Ver Detalhes <ArrowRight size={18} />
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-                  <CardContent>
-                    <ul className="text-muted-foreground mb-4 list-disc list-inside space-y-1">
-                      {plan.description.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </ul>
-                    <p className="font-bold text-lg mb-4">{plan.price}</p>
+        {openService && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+            <div className="relative max-w-xl w-full bg-black/80 border border-white/10 rounded-2xl p-10 shadow-2xl animate-fadeIn">
+              <button
+                onClick={() => setOpenService(null)}
+                className="absolute top-4 right-4 text-gray-300 hover:text-white"
+              >
+                <X size={28} />
+              </button>
 
-                    <div className="flex flex-col gap-2">
-                      <Button
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-                        onClick={() => setOpenVideo(plan.videoSrc)}
-                      >
-                        Saiba Mais
-                      </Button>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-blue-500/20 text-blue-400">
+                  {openService.icon}
+                </div>
 
-                      <Link href={plan.link} target="_blank">
-                        <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
-                          Comprar
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                <h3 className="text-3xl font-bold">{openService.title}</h3>
+              </div>
+
+              <ul className="list-disc list-inside space-y-3 mb-10 text-gray-300 text-base">
+                {openService.details.map((item: string, idx: number) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
+
+              <Button
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-5 rounded-xl text-lg font-semibold"
+                onClick={() => window.open("https://wa.me/+5554996416573", "_blank")}
+              >
+                Falar com um Consultor
+              </Button>
             </div>
           </div>
-        ))}
+        )}
       </div>
 
-      {/* Modal */}
-      {openVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
-          <div className="relative w-full max-w-3xl bg-white rounded-xl overflow-hidden shadow-lg animate-fadeIn">
-            {/* Botão X */}
-            <button
-              onClick={() => setOpenVideo(null)}
-              className="absolute top-3 right-3 text-gray-700 hover:text-black z-50 p-2"
-            >
-              <X size={28} />
-            </button>
-
-            <video
-              src={openVideo}
-              controls
-              autoPlay
-              className="w-full h-auto rounded-b-xl"
-            />
-          </div>
-        </div>
-      )}
-
-      {/* Animação */}
       <style jsx>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: scale(0.9); }
-          to { opacity: 1; transform: scale(1); }
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
         .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
+          animation: fadeIn 0.25s ease-out forwards;
         }
       `}</style>
     </section>
